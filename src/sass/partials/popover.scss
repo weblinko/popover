@@ -1,4 +1,4 @@
-.pop-comp-wrapper {
+.popover-wrapper {
   display: none;
   position: absolute;
   top: 0;
@@ -12,7 +12,7 @@
   z-index: 1;
 }
 
-.pop-comp-arrow {
+.popover-arrow {
   position: absolute;
   z-index: 1;
   width: $arrowSize;
@@ -33,14 +33,14 @@
   }
 }
 
-.pop-comp-content {
+.popover-content {
   position: relative;
   z-index: 2;
 }
 
-.pop-comp-wrapper {
+.popover-wrapper {
   &.position-bottom {
-    .pop-comp-arrow {
+    .popover-arrow {
       margin-left: -$arrowHalfSize;
       left: 0;
       top: -#{$arrowSize - 1px};
@@ -52,7 +52,7 @@
   }
 
   &.position-top {
-    .pop-comp-arrow {
+    .popover-arrow {
       margin-left: -$arrowHalfSize;
       left: 0;
       bottom: -#{$arrowSize - 1px};
@@ -60,7 +60,7 @@
   }
 
   &.position-right {
-    .pop-comp-arrow {
+    .popover-arrow {
       margin-top: -$arrowHalfSize;
       top: 0;
       left: -#{$arrowSize - 1px};
@@ -68,7 +68,7 @@
   }
 
   &.position-left {
-    .pop-comp-arrow {
+    .popover-arrow {
       margin-top: -$arrowHalfSize;
       top: 0;
       right: -#{$arrowSize - 1px};
@@ -76,6 +76,6 @@
   }
 }
 
-.pop-comp-disable-events {
+.popover-disable-events {
   pointer-events: none;
 }

@@ -153,8 +153,8 @@ export class PopoverComponent {
 
   onDocumentClick(e) {
     let $target = e.target;
-    let $triggerEle = $target.closest('.pop-comp-ele');
-    let $popoverEle = $target.closest('.pop-comp-wrapper');
+    let $triggerEle = $target.closest('.popover-activator');
+    let $popoverEle = $target.closest('.popover-wrapper');
 
     if (this.hideOnOuterClick && $triggerEle !== this.$ele && $popoverEle !== this.$popover) {
       this.hide();
@@ -278,8 +278,8 @@ export class PopoverComponent {
     $ele.show = PopoverComponent.showMethod;
     $ele.hide = PopoverComponent.hideMethod;
 
-    DomUtils.addClass(this.$ele, 'pop-comp-ele');
-    DomUtils.addClass(this.$popover, 'pop-comp-wrapper');
+    DomUtils.addClass(this.$ele, 'popover-activator');
+    DomUtils.addClass(this.$popover, 'popover-wrapper');
   }
   /** set methods - end */
 
@@ -339,13 +339,13 @@ export class PopoverComponent {
       return;
     }
 
-    DomUtils.addClass(this.$popover, 'pop-comp-disable-events');
+    DomUtils.addClass(this.$popover, 'popover-disable-events');
 
     this.$popover.popComp = this;
     this.beforeShow();
     this.popper.show({ resetPosition: true });
 
-    DomUtils.addClass(this.$ele, 'pop-comp-active');
+    DomUtils.addClass(this.$ele, 'popover-active');
   }
 
   hide() {
@@ -371,7 +371,7 @@ export class PopoverComponent {
   }
 
   isShown() {
-    return DomUtils.hasClass(this.$ele, 'pop-comp-active');
+    return DomUtils.hasClass(this.$ele, 'popover-active');
   }
 
   isShownForOtherTrigger() {
@@ -399,10 +399,10 @@ export class PopoverComponent {
     if (this.showOnHover) {
       /** using setTimeout to avoid an issue in firefox. show/hide event is calling continuously when showOnHover is enabled */
       setTimeout(() => {
-        DomUtils.removeClass(this.$popover, 'pop-comp-disable-events');
+        DomUtils.removeClass(this.$popover, 'popover-disable-events');
       }, 2000);
     } else {
-      DomUtils.removeClass(this.$popover, 'pop-comp-disable-events');
+      DomUtils.removeClass(this.$popover, 'popover-disable-events');
     }
 
     if (!this.disableUpdatePosition) {
@@ -415,7 +415,7 @@ export class PopoverComponent {
   }
 
   afterHide() {
-    DomUtils.removeClass(this.$ele, 'pop-comp-active');
+    DomUtils.removeClass(this.$ele, 'popover-active');
 
     if (typeof this.afterHideCallback === 'function') {
       this.afterHideCallback(this);
@@ -427,11 +427,11 @@ export class PopoverComponent {
       return;
     }
 
-    let $arrowEle = this.$popover.querySelector('.pop-comp-arrow');
+    let $arrowEle = this.$popover.querySelector('.popover-arrow');
 
     if (!$arrowEle) {
-      this.$popover.insertAdjacentHTML('afterbegin', '<i class="pop-comp-arrow"></i>');
-      $arrowEle = this.$popover.querySelector('.pop-comp-arrow');
+      this.$popover.insertAdjacentHTML('afterbegin', '<i class="popover-arrow"></i>');
+      $arrowEle = this.$popover.querySelector('.popover-arrow');
     }
 
     this.$arrowEle = $arrowEle;
